@@ -14,21 +14,21 @@ function App() {
 
     let intervalo: number = 1000;
 
-    const algoritmoInsertion = createAlgoritmo(
+    const algoritmoInsertion: Algoritmo = createAlgoritmo(
         "Insertion Sort",
         sample,
         [],
         insertionSort([...sample], intervalo)
     );
 
-    const algoritmoBubble = createAlgoritmo(
+    const algoritmoBubble: Algoritmo = createAlgoritmo(
         "Bubble Sort",
         sample,
         [],
         bubbleSort([...sample], intervalo)
     );
 
-    const algoritmoHeapSort = createAlgoritmo(
+    const algoritmoHeapSort: Algoritmo = createAlgoritmo(
         "Heap Sort",
         sample,
         [],
@@ -40,13 +40,6 @@ function App() {
         algoritmoBubble,
         algoritmoHeapSort,
     ]);
-
-    // Añade en la cabecera: import React, { useEffect, useState } from "react";
-    const [timesInsertionSort, setTimesInsertionSort] = useState<number[]>([]);
-
-    useEffect(() => {
-        setTimesInsertionSort(insertionSort([...sample], intervalo));
-    }, []); // ejecuta una vez al montar
 
     return (
         <>
