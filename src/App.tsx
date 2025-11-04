@@ -5,6 +5,7 @@ import { createAlgoritmo, type Algoritmo } from "./model/Algoritmo";
 // Importa los algoritmos de ordenamiento
 import { bubbleSort } from "./logic/bubleSort";
 import { insertionSort } from "./logic/insertionSort";
+import { heapSort } from "./logic/heapSort";
 
 function App() {
     const sample: number[] = Array.from({ length: 10000 }, () =>
@@ -27,9 +28,17 @@ function App() {
         bubbleSort([...sample], intervalo)
     );
 
+    const algoritmoHeapSort = createAlgoritmo(
+        "Heap Sort",
+        sample,
+        [],
+        heapSort([...sample], intervalo)
+    );
+
     const [listaAlgoritmos, setListaAlgoritmos] = useState<Algoritmo[]>([
         algoritmoInsertion,
         algoritmoBubble,
+        algoritmoHeapSort,
     ]);
 
     // Añade en la cabecera: import React, { useEffect, useState } from "react";
