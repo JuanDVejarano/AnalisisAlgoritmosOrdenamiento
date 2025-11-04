@@ -1,7 +1,11 @@
 import "./App.scss";
-import Grafica from "./components/GraficaGeneral/GraficaGeneral";
+//Importacion dependencias
 import { useState, useEffect } from "react";
+//Importacion de logica
 import { createAlgoritmo, type Algoritmo } from "./model/Algoritmo";
+// Importar Componentes
+import Grafica from "./components/GraficaGeneral/GraficaGeneral";
+import Inputs from "./components/Inputs/Inputs";
 // Importa los algoritmos de ordenamiento
 import { bubbleSort } from "./logic/bubleSort";
 import { insertionSort } from "./logic/insertionSort";
@@ -43,6 +47,7 @@ function App() {
 
     return (
         <>
+            <Inputs />
             <Grafica data={listaAlgoritmos} />
         </>
     );
