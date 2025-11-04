@@ -1,7 +1,7 @@
 import "./App.scss";
 import Grafica from "./components/GraficaGeneral/GraficaGeneral";
 import { useState, useEffect } from "react";
-import { createAlgoritmo } from "./model/Algoritmo";
+import { createAlgoritmo, type Algoritmo } from "./model/Algoritmo";
 // Importa los algoritmos de ordenamiento
 import { bubbleSort } from "./logic/bubleSort";
 import { insertionSort } from "./logic/insertionSort";
@@ -27,8 +27,10 @@ function App() {
         bubbleSort([...sample], intervalo)
     );
 
-    console.log(typeof algoritmoInsertion);
-    console.log(typeof algoritmoBubble);
+    const [listaAlgoritmos, setListaAlgoritmos] = useState<Algoritmo[]>([
+        algoritmoInsertion,
+        algoritmoBubble,
+    ]);
 
     // Añade en la cabecera: import React, { useEffect, useState } from "react";
     const [timesInsertionSort, setTimesInsertionSort] = useState<number[]>([]);
@@ -39,7 +41,7 @@ function App() {
 
     return (
         <>
-            <Grafica dataInsertionSort={timesInsertionSort} />
+            <Grafica data={listaAlgoritmos} />
         </>
     );
 }

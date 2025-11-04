@@ -11,6 +11,7 @@ import {
     Legend,
 } from "chart.js";
 import type { ChartConfiguration } from "chart.js";
+import type { Algoritmo } from "../../model/Algoritmo";
 
 ChartJS.register(
     CategoryScale,
@@ -23,7 +24,7 @@ ChartJS.register(
 );
 
 interface GraficaProps {
-    dataInsertionSort?: number[];
+    data?: Algoritmo[];
 }
 
 // Colores sustituyendo Utils.CHART_COLORS
@@ -33,32 +34,20 @@ const CHART_COLORS = {
     green: "rgb(75, 192, 192)",
 };
 
-// Datos "quemados"
-const rawDatapoints = [
-    0,
-    20,
-    20,
-    60,
-    60,
-    120,
-    NaN,
-    180,
-    120,
-    125,
-    105,
-    110,
-    170,
-];
-
-// Datos "quemados"
-const rawDatapoints2 = [0, 20, 20, 60, 60, 120, 180, 120, 125, 105, 110, 170];
-
-function Grafica({ dataInsertionSort }: GraficaProps) {
+function Grafica({ data }: GraficaProps) {
     // reemplazar NaN por null para que Chart.js deje hueco
+    console.log(data);
     const datapoints =
-        dataInsertionSort?.map((v) => (Number.isNaN(v) ? null : v)) ?? [];
+        data?.[0]?.arregloDeTiempos.map((v) => (Number.isNaN(v) ? null : v)) ??
+        [];
 
-    console.log("datapoints:", datapoints);
+    const datapointsInsertio =
+        data?.[0]?.arregloDeTiempos.map((v) => (Number.isNaN(v) ? null : v)) ??
+        [];
+
+    const datapointsBurbuja =
+        data?.[1]?.arregloDeTiempos.map((v) => (Number.isNaN(v) ? null : v)) ??
+        [];
 
     // generar labels con la misma longitud que datapoints
     const labels = datapoints.map((_, i) => `P${i}`);
@@ -67,8 +56,8 @@ function Grafica({ dataInsertionSort }: GraficaProps) {
         labels,
         datasets: [
             {
-                label: "Cubic interpolation (monotone)",
-                data: datapoints,
+                label: data?.[0]?.nombreAlgoritmo ?? "Dataset 1",
+                data: datapointsInsertio,
                 borderColor: CHART_COLORS.red,
                 backgroundColor: CHART_COLORS.red,
                 fill: false,
@@ -76,8 +65,8 @@ function Grafica({ dataInsertionSort }: GraficaProps) {
                 tension: 0.4,
             },
             {
-                label: "Cubic interpolation",
-                data: datapoints,
+                label: data?.[1]?.nombreAlgoritmo ?? "Dataset 2",
+                data: datapointsBurbuja,
                 borderColor: CHART_COLORS.blue,
                 backgroundColor: CHART_COLORS.blue,
                 fill: false,
@@ -112,11 +101,11 @@ function Grafica({ dataInsertionSort }: GraficaProps) {
             scales: {
                 x: {
                     display: true,
-                    title: { display: true, text: "Tiempo" },
+                    title: { display: true, text: "Intervalo de datos" },
                 },
                 y: {
                     display: true,
-                    title: { display: true, text: "Intervalo de datos" },
+                    title: { display: true, text: "Tiempo" },
                     suggestedMin: 0,
                     //suggestedMax: 200,
                 },
