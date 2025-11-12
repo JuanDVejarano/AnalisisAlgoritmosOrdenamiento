@@ -1,6 +1,6 @@
 import "./App.scss";
 //Importacion dependencias
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //Importacion de logica
 import { createAlgoritmo, type Algoritmo } from "./model/Algoritmo";
 // Importar Componentes
@@ -39,7 +39,7 @@ function App() {
         heapSort([...sample], intervalo)
     );
 
-    const [listaAlgoritmos, setListaAlgoritmos] = useState<Algoritmo[]>([
+    const [listaAlgoritmos] = useState<Algoritmo[]>([
         algoritmoInsertion,
         algoritmoBubble,
         algoritmoHeapSort,
