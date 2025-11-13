@@ -1,11 +1,22 @@
+// ...existing code...
 import React, { useState } from "react";
 import Grafica from "../../components/GraficaIndividual/Graph";
+import Editor from "@monaco-editor/react";
 import "./CodigoAnalisis.scss";
 
 function CodigoAnalisis() {
-    //arreglo de tiempos con estado de react
-    //const [tiempos, setTiempos] = React.useState<number[]>([]>);
     const [tiempos, setTiempos] = useState<number[]>([]);
+    const [code, setCode] = useState<string>(`// escribe aquí tu función
+function imprimirHolaMundo() {
+  for (let i = 0; i < 10; i++) {
+    for (let j = 0; j < 10; j++) {
+      console.log("Hola Mundo");
+      contexto.tomarTiempo();
+    }
+  }
+}
+imprimirHolaMundo();`);
+
     let inicio: number;
     let repeticionesActual: number = 0;
 
@@ -19,54 +30,41 @@ function CodigoAnalisis() {
         }
     }
 
-    const contexto = {
-        tomarTiempo,
-        console,
-    };
+    const contexto = { tomarTiempo, console };
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        setTiempos([]); // Limpiar los tiempos antes de cada análisis
         event.preventDefault();
-        const formData = new FormData(event.currentTarget);
-        const inputText = formData.get("inputText") as string;
-
+        setTiempos([]);
         inicio = performance.now();
         try {
-            const ejecutar = new Function("contexto", inputText);
+            const ejecutar = new Function("contexto", code);
             ejecutar(contexto);
         } catch (e) {
             console.error("❌ Error al ejecutar el código:", e);
         }
-
-        console.log(tiempos);
     }
-
-    // #region Funciones de ejemplo para evaluar
-    /*ejemplo 1 de funcion a evaluar
-    function imprimirHolaMundo() {
-      for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-          console.log("Hola Mundo");
-          contexto.tomarTiempo();
-        }
-      }
-    }
-    imprimirHolaMundo();
-    */
-
-    /*ejemplo 2 de funcion a evaluar
-    
-    */
-    // #endregion
 
     return (
         <>
-            <form action="\" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <h1>Análisis de Sintaxis</h1>
-                <label htmlFor="inputText">Ingrese el texto a analizar:</label>
+                <label htmlFor="inputCode">Ingrese el código a analizar:</label>
                 <br />
-                <textarea id="inputText" name="inputText" rows={10} cols={50} />
-                <br />
+                <div className="editorContainer">
+                    <Editor
+                        height="100%"
+                        defaultLanguage="javascript"
+                        value={code}
+                        onChange={(v) => setCode(v ?? "")}
+                        theme="vs-dark"
+                        options={{
+                            automaticLayout: true,
+                            minimap: { enabled: false },
+                            fontSize: 13,
+                        }}
+                    />
+                </div>
+
                 <button type="submit">Analizar</button>
             </form>
             <Grafica data={tiempos} />
@@ -75,3 +73,4 @@ function CodigoAnalisis() {
 }
 
 export default CodigoAnalisis;
+// ...existing code...
