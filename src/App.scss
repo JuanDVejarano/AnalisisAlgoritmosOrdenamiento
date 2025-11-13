@@ -1,9 +1,22 @@
 /* Converted from App.css to App.scss - you can extend with variables/nesting */
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+}
+
+.app {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.sectionMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  flex-basis: auto;
+  padding-top: 60px;
 }
 
 .logo {
