@@ -6,6 +6,7 @@ import {
     LinearScale,
     PointElement,
     LineElement,
+    LineController,
     Title,
     Tooltip,
     Legend,
@@ -14,6 +15,7 @@ import type { ChartConfiguration } from "chart.js";
 import type { Algoritmo } from "../../model/Algoritmo";
 
 ChartJS.register(
+    LineController,
     CategoryScale,
     LinearScale,
     PointElement,
