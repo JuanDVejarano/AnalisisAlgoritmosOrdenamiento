@@ -2,9 +2,10 @@ import "./App.scss";
 import { HashRouter, Route, Routes } from "react-router-dom";
 // pages
 import IndexAlgoritmos from "./pages/algoritmos/IndexAlgoritmos";
-import CodigoAnalisis from "./pages/codigo/CodigoAnalisis";
+import CodigoAnalisis from "./pages/code/analisis/CodigoAnalisis";
 // Components
 import Menu from "./components/Menu/Menu";
+import EjemplosCodigo from "./pages/code/ejemplos/EjemplosCodigo";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                             element={<IndexAlgoritmos />}
                         />
                         <Route path="/Codigo" element={<CodigoAnalisis />} />
+                        <Route path="/Ejemplos" element={<EjemplosCodigo />} />
                     </Routes>
                 </section>
             </HashRouter>

@@ -1,6 +1,6 @@
 // ...existing code...
 import React, { useState } from "react";
-import Grafica from "../../components/GraficaIndividual/Graph";
+import Grafica from "../../../components/GraficaIndividual/Graph";
 import Editor from "@monaco-editor/react";
 import "./CodigoAnalisis.scss";
 
