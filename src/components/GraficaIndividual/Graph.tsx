@@ -37,7 +37,7 @@ function Grafica({ data }: { data?: number[] }) {
     const datapoints = rawDatapoints.map((v) => (Number.isNaN(v) ? null : v));
 
     // generar labels con la misma longitud que datapoints
-    const labels = datapoints.map((_, i) => `P${i}`);
+    const labels = datapoints.map((_, i) => `I${i}`);
 
     const dataChart = {
         labels,

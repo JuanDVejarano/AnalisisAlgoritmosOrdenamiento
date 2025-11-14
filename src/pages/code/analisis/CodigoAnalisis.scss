@@ -25,9 +25,14 @@
   position: relative;
   display: inline-block;
   cursor: pointer;
-  margin-left: 17px;
+  margin-left: 15px;
   font-size: 12px;
   font-weight: bold;
+  &__icon{
+      width: 19px;
+      vertical-align: middle;
+      margin-left: 3px;
+  }
 }
 
 .tooltip .tooltiptext {

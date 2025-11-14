@@ -1,0 +1,17 @@
+.tablaArreglos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    &__cell{
+        flex: 1 0 5%;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        &--resalt{
+            @extend .tablaArreglos__cell;
+            background-color: #6e3857;
+            font-weight: bold;
+        }
+    }
+}

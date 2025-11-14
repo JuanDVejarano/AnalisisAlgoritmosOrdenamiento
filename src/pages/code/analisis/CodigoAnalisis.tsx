@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Grafica from "../../../components/GraficaIndividual/Graph";
 import Editor from "@monaco-editor/react";
 import "./CodigoAnalisis.scss";
+import iconTooltip from "../../../assets/icons/tooltip.png";
 
 function CodigoAnalisis() {
     const [tiempos, setTiempos] = useState<number[]>([]);
@@ -59,9 +60,18 @@ bucles();`);
                     <br /> <br />
                     <div className="tooltip">
                         Ayuda
+                        <img
+                            className="tooltip__icon"
+                            src={iconTooltip}
+                            alt="Icono de ayuda"
+                        />
                         <span className="tooltiptext">
                             <ul>
                                 <li>Use codigo JavaScript</li>
+                                <li>
+                                    Al crear la funcion ejecutela al final del
+                                    codigo
+                                </li>
                                 <li>
                                     Use la función
                                     contexto.tomarTiempo(repeticiones) para

@@ -1,5 +1,5 @@
 // Modelos y utils
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createAlgoritmo, type Algoritmo } from "../../model/Algoritmo";
 
 // Componentes
@@ -13,6 +13,7 @@ import { heapSort } from "../../logic/heapSort";
 import { selectionSort } from "../../logic/selectionSort";
 import { countingSort } from "../../logic/countingSort";
 import { shellSort } from "../../logic/shellSort";
+import TablaArreglos from "../../components/TablaArreglos/TablaArreglos";
 
 function IndexAlgoritmos() {
     const [numeroArrays, setNumeroArrays] = useState<number>(() => 10000);
@@ -89,10 +90,10 @@ function IndexAlgoritmos() {
 
     const [listaAlgoritmos, setListaAlgoritmos] = useState<Algoritmo[]>([]);
 
-    useEffect(() => {
-        // Inicializa el gráfico con los valores por defecto del estado
-        crearGrafico(numeroArrays, intervalo);
-    }, []);
+    // useEffect(() => {
+    //     // Inicializa el gráfico con los valores por defecto del estado
+    //     crearGrafico(numeroArrays, intervalo);
+    // }, []);
 
     return (
         <>
@@ -104,6 +105,14 @@ function IndexAlgoritmos() {
                     onGenerate={handleGenerate}
                 />
                 <Grafica data={listaAlgoritmos} />
+                <TablaArreglos
+                    arrayInicial={
+                        listaAlgoritmos.length > 0
+                            ? listaAlgoritmos[0].arregloInicial
+                            : []
+                    }
+                    interval={intervalo}
+                />
             </section>
         </>
     );
