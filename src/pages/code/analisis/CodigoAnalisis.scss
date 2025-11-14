@@ -3,10 +3,14 @@
 }
 
 .editorContainer{
-    height: 250px;
     width: 500px;
     border: 1px solid #333;
     margin-bottom: 12px;
+}
+
+.editorContainerMain{
+    @extend .editorContainer;
+    height: 250px;
 }
 
 .contenSection{
@@ -14,4 +18,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 17px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 291px;
+  background-color: black;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

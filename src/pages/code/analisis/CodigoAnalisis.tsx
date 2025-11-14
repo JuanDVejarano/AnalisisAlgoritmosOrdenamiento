@@ -56,8 +56,39 @@ bucles();`);
                     <label htmlFor="inputCode">
                         Ingrese el código a analizar:
                     </label>
-                    <br />
-                    <div className="editorContainer">
+                    <br /> <br />
+                    <div className="tooltip">
+                        Ayuda
+                        <span className="tooltiptext">
+                            <ul>
+                                <li>Use codigo JavaScript</li>
+                                <li>
+                                    Use la función
+                                    contexto.tomarTiempo(repeticiones) para
+                                    medir el tiempo de ejecución.
+                                </li>
+                                <li>
+                                    El parámetro 'repeticiones' indica cuántas
+                                    veces se llamará antes de registrar el
+                                    tiempo.
+                                </li>
+                                <li>
+                                    Ejemplos:
+                                    <ul>
+                                        <li>
+                                            contexto.tomarTiempo(): mide cada
+                                            ejecución.
+                                        </li>
+                                        <li>
+                                            contexto.tomarTiempo(100): mide cada
+                                            100 ejecuciones.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                    <div className="editorContainerMain">
                         <Editor
                             height="100%"
                             defaultLanguage="javascript"
@@ -71,7 +102,6 @@ bucles();`);
                             }}
                         />
                     </div>
-
                     <button type="submit">Analizar</button>
                 </form>
                 <Grafica data={tiempos} />
