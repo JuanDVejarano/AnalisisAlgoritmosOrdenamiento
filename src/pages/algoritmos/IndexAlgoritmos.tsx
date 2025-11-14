@@ -1,5 +1,5 @@
 // Modelos y utils
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createAlgoritmo, type Algoritmo } from "../../model/Algoritmo";
 
 // Componentes
@@ -15,70 +15,94 @@ import { countingSort } from "../../logic/countingSort";
 import { shellSort } from "../../logic/shellSort";
 
 function IndexAlgoritmos() {
-    const sample: number[] = Array.from({ length: 10000 }, () =>
-        Math.floor(Math.random() * 10000)
-    );
+    const [numeroArrays, setNumeroArrays] = useState<number>(() => 10000);
+    const [intervalo, setIntervalo] = useState<number>(() => 1000);
 
-    let intervalo: number = 1000;
+    function handleGenerate(cantidad: number, intervaloNuevo: number) {
+        setNumeroArrays(cantidad);
+        setIntervalo(intervaloNuevo);
+        // Llamar a crearGrafico con los valores nuevos para evitar usar estado aún no actualizado
+        crearGrafico(cantidad, intervaloNuevo);
+    }
 
-    //#region objetos Algoritmos de ordenamiento
-    const algoritmoInsertion: Algoritmo = createAlgoritmo(
-        "Insertion Sort",
-        sample,
-        [],
-        insertionSort([...sample], intervalo)
-    );
+    function crearGrafico(cantidad?: number, intervaloParam?: number) {
+        const len = cantidad ?? numeroArrays;
+        const intv = intervaloParam ?? intervalo;
 
-    const algoritmoBubble: Algoritmo = createAlgoritmo(
-        "Bubble Sort",
-        sample,
-        [],
-        bubbleSort([...sample], intervalo)
-    );
+        const sample: number[] = Array.from({ length: len }, () =>
+            Math.floor(Math.random() * len)
+        );
 
-    const algoritmoHeapSort: Algoritmo = createAlgoritmo(
-        "Heap Sort",
-        sample,
-        [],
-        heapSort([...sample], intervalo)
-    );
+        //#region objetos Algoritmos de ordenamiento
+        let algoritmoInsertion: Algoritmo = createAlgoritmo(
+            "Insertion Sort",
+            sample,
+            [],
+            insertionSort([...sample], intv)
+        );
 
-    const algoritmoSelection: Algoritmo = createAlgoritmo(
-        "Selection Sort",
-        sample,
-        [],
-        selectionSort([...sample], intervalo)
-    );
+        let algoritmoBubble: Algoritmo = createAlgoritmo(
+            "Bubble Sort",
+            sample,
+            [],
+            bubbleSort([...sample], intv)
+        );
 
-    const algoritmoCounting: Algoritmo = createAlgoritmo(
-        "Counting Sort",
-        sample,
-        [],
-        countingSort([...sample], intervalo)
-    );
+        let algoritmoHeapSort: Algoritmo = createAlgoritmo(
+            "Heap Sort",
+            sample,
+            [],
+            heapSort([...sample], intv)
+        );
 
-    const algoritmoShell: Algoritmo = createAlgoritmo(
-        "Shell Sort",
-        sample,
-        [],
-        shellSort([...sample], intervalo)
-    );
-    //#endregion
+        let algoritmoSelection: Algoritmo = createAlgoritmo(
+            "Selection Sort",
+            sample,
+            [],
+            selectionSort([...sample], intv)
+        );
 
-    const [listaAlgoritmos] = useState<Algoritmo[]>([
-        algoritmoInsertion,
-        algoritmoBubble,
-        algoritmoHeapSort,
-        algoritmoSelection,
-        algoritmoCounting,
-        algoritmoShell,
-    ]);
+        let algoritmoCounting: Algoritmo = createAlgoritmo(
+            "Counting Sort",
+            sample,
+            [],
+            countingSort([...sample], intv)
+        );
+
+        let algoritmoShell: Algoritmo = createAlgoritmo(
+            "Shell Sort",
+            sample,
+            [],
+            shellSort([...sample], intv)
+        );
+        //#endregion
+
+        setListaAlgoritmos([
+            algoritmoSelection,
+            algoritmoBubble,
+            algoritmoInsertion,
+            algoritmoHeapSort,
+            algoritmoCounting,
+            algoritmoShell,
+        ]);
+    }
+
+    const [listaAlgoritmos, setListaAlgoritmos] = useState<Algoritmo[]>([]);
+
+    useEffect(() => {
+        // Inicializa el gráfico con los valores por defecto del estado
+        crearGrafico(numeroArrays, intervalo);
+    }, []);
 
     return (
         <>
             <h1 className="titleSection">Comparacion</h1>
             <section className="contenSection">
-                <Inputs />
+                <Inputs
+                    cantidadArreglo={numeroArrays}
+                    intervalo={intervalo}
+                    onGenerate={handleGenerate}
+                />
                 <Grafica data={listaAlgoritmos} />
             </section>
         </>
