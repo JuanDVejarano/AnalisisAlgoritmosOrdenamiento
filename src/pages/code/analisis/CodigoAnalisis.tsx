@@ -41,6 +41,10 @@ imprimirHolaMundo();`);
             ejecutar(contexto);
         } catch (e) {
             console.error("❌ Error al ejecutar el código:", e);
+            //alerta en navegador
+            alert(
+                "❌ Error al ejecutar el código. Revisa la consola del navegador para más detalles."
+            );
         }
     }
 
