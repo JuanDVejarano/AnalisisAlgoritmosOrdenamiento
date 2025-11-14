@@ -14,4 +14,27 @@
             font-weight: bold;
         }
     }
+    &--hiden{
+        display: none;
+    }
+}
+
+.buttonArrya{
+    border-radius: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid;
+    padding: 8px 10px;
+    background-color: #3b3b3b;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-shadow: none;
+    outline: none;
+    margin-bottom: 10px;
+    min-width: 175px;
 }

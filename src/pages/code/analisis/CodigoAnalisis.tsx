@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Grafica from "../../../components/GraficaIndividual/Graph";
 import Editor from "@monaco-editor/react";
 import "./CodigoAnalisis.scss";
-import iconTooltip from "../../../assets/icons/tooltip.png";
+import Tooltip from "../../../components/Tooltip/Tooltip";
 
 function CodigoAnalisis() {
     const [tiempos, setTiempos] = useState<number[]>([]);
@@ -58,46 +58,37 @@ bucles();`);
                         Ingrese el código a analizar:
                     </label>
                     <br /> <br />
-                    <div className="tooltip">
-                        Ayuda
-                        <img
-                            className="tooltip__icon"
-                            src={iconTooltip}
-                            alt="Icono de ayuda"
-                        />
-                        <span className="tooltiptext">
-                            <ul>
-                                <li>Use codigo JavaScript</li>
-                                <li>
-                                    Al crear la funcion ejecutela al final del
-                                    codigo
-                                </li>
-                                <li>
-                                    Use la función
-                                    contexto.tomarTiempo(repeticiones) para
-                                    medir el tiempo de ejecución.
-                                </li>
-                                <li>
-                                    El parámetro 'repeticiones' indica cuántas
-                                    veces se llamará antes de registrar el
-                                    tiempo.
-                                </li>
-                                <li>
-                                    Ejemplos:
-                                    <ul>
-                                        <li>
-                                            contexto.tomarTiempo(): mide cada
-                                            ejecución.
-                                        </li>
-                                        <li>
-                                            contexto.tomarTiempo(100): mide cada
-                                            100 ejecuciones.
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </span>
-                    </div>
+                    <Tooltip>
+                        <ul>
+                            <li>Use codigo JavaScript</li>
+                            <li>
+                                Al crear la funcion ejecutela al final del
+                                codigo
+                            </li>
+                            <li>
+                                Use la función
+                                contexto.tomarTiempo(repeticiones) para medir el
+                                tiempo de ejecución.
+                            </li>
+                            <li>
+                                El parámetro 'repeticiones' indica cuántas veces
+                                se llamará antes de registrar el tiempo.
+                            </li>
+                            <li>
+                                Ejemplos:
+                                <ul>
+                                    <li>
+                                        contexto.tomarTiempo(): mide cada
+                                        ejecución.
+                                    </li>
+                                    <li>
+                                        contexto.tomarTiempo(100): mide cada 100
+                                        ejecuciones.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </Tooltip>
                     <div className="editorContainerMain">
                         <Editor
                             height="100%"

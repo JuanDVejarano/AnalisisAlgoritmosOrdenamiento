@@ -113,6 +113,15 @@ function IndexAlgoritmos() {
                     }
                     interval={intervalo}
                 />
+                <TablaArreglos
+                    arrayInicial={
+                        listaAlgoritmos.length > 0
+                            ? listaAlgoritmos[0].arregloInicial
+                            : []
+                    }
+                    interval={intervalo}
+                    isInitial={false}
+                />
             </section>
         </>
     );
