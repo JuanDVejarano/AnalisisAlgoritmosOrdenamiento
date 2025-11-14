@@ -76,8 +76,11 @@ function IndexAlgoritmos() {
 
     return (
         <>
-            <Inputs />
-            <Grafica data={listaAlgoritmos} />
+            <h1 className="titleSection">Comparacion</h1>
+            <section className="contenSection">
+                <Inputs />
+                <Grafica data={listaAlgoritmos} />
+            </section>
         </>
     );
 }

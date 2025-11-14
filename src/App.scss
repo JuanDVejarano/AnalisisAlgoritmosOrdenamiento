@@ -13,10 +13,9 @@
 .sectionMain {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 40px;
   flex: 1;
   flex-basis: auto;
-  padding-top: 60px;
   overflow-y: scroll;
 }
 

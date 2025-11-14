@@ -7,15 +7,15 @@ import "./CodigoAnalisis.scss";
 function CodigoAnalisis() {
     const [tiempos, setTiempos] = useState<number[]>([]);
     const [code, setCode] = useState<string>(`// escribe aquí tu función
-function imprimirHolaMundo() {
-  for (let i = 0; i < 10; i++) {
-    for (let j = 0; j < 10; j++) {
+function bucles() {
+  for (let i = 0; i < 400; i++) {
+    for (let j = 0; j < 400; j++) {
       console.log("Hola Mundo");
-      contexto.tomarTiempo();
+      contexto.tomarTiempo(10000);
     }
   }
 }
-imprimirHolaMundo();`);
+bucles();`);
 
     let inicio: number;
     let repeticionesActual: number = 0;
@@ -50,28 +50,32 @@ imprimirHolaMundo();`);
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <h1>Análisis de Sintaxis</h1>
-                <label htmlFor="inputCode">Ingrese el código a analizar:</label>
-                <br />
-                <div className="editorContainer">
-                    <Editor
-                        height="100%"
-                        defaultLanguage="javascript"
-                        value={code}
-                        onChange={(v) => setCode(v ?? "")}
-                        theme="vs-dark"
-                        options={{
-                            automaticLayout: true,
-                            minimap: { enabled: false },
-                            fontSize: 13,
-                        }}
-                    />
-                </div>
+            <h1 className="titleSection">Análisis de Sintaxis</h1>
+            <section className="contenSection">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="inputCode">
+                        Ingrese el código a analizar:
+                    </label>
+                    <br />
+                    <div className="editorContainer">
+                        <Editor
+                            height="100%"
+                            defaultLanguage="javascript"
+                            value={code}
+                            onChange={(v) => setCode(v ?? "")}
+                            theme="vs-dark"
+                            options={{
+                                automaticLayout: true,
+                                minimap: { enabled: false },
+                                fontSize: 13,
+                            }}
+                        />
+                    </div>
 
-                <button type="submit">Analizar</button>
-            </form>
-            <Grafica data={tiempos} />
+                    <button type="submit">Analizar</button>
+                </form>
+                <Grafica data={tiempos} />
+            </section>
         </>
     );
 }

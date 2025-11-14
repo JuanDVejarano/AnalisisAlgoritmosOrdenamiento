@@ -1,6 +1,17 @@
+.titleSection{
+    margin-top: 0px;
+}
+
 .editorContainer{
     height: 250px;
     width: 500px;
     border: 1px solid #333;
     margin-bottom: 12px;
+}
+
+.contenSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
