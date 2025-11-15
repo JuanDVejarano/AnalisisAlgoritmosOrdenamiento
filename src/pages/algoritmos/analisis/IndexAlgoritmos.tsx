@@ -1,19 +1,19 @@
 // Modelos y utils
 import { useState } from "react";
-import { createAlgoritmo, type Algoritmo } from "../../model/Algoritmo";
+import { createAlgoritmo, type Algoritmo } from "../../../model/Algoritmo";
 
 // Componentes
-import Grafica from "../../components/GraficaGeneral/GraficaGeneral";
-import Inputs from "../../components/Inputs/Inputs";
+import Grafica from "../../../components/GraficaGeneral/GraficaGeneral";
+import Inputs from "../../../components/Inputs/Inputs";
 
 // Importa los algoritmos de ordenamiento
-import { bubbleSort } from "../../logic/bubleSort";
-import { insertionSort } from "../../logic/insertionSort";
-import { heapSort } from "../../logic/heapSort";
-import { selectionSort } from "../../logic/selectionSort";
-import { countingSort } from "../../logic/countingSort";
-import { shellSort } from "../../logic/shellSort";
-import TablaArreglos from "../../components/TablaArreglos/TablaArreglos";
+import { bubbleSort } from "../../../logic/bubleSort";
+import { insertionSort } from "../../../logic/insertionSort";
+import { heapSort } from "../../../logic/heapSort";
+import { selectionSort } from "../../../logic/selectionSort";
+import { countingSort } from "../../../logic/countingSort";
+import { shellSort } from "../../../logic/shellSort";
+import TablaArreglos from "../../../components/TablaArreglos/TablaArreglos";
 
 function IndexAlgoritmos() {
     const [numeroArrays, setNumeroArrays] = useState<number>(() => 10000);
@@ -38,43 +38,43 @@ function IndexAlgoritmos() {
         let algoritmoInsertion: Algoritmo = createAlgoritmo(
             "Insertion Sort",
             sample,
-            [],
-            insertionSort([...sample], intv)
+            insertionSort([...sample], intv).sorted,
+            insertionSort([...sample], intv).times
         );
 
         let algoritmoBubble: Algoritmo = createAlgoritmo(
             "Bubble Sort",
             sample,
-            [],
-            bubbleSort([...sample], intv)
+            bubbleSort([...sample], intv).sorted,
+            bubbleSort([...sample], intv).times
         );
 
         let algoritmoHeapSort: Algoritmo = createAlgoritmo(
             "Heap Sort",
             sample,
-            [],
-            heapSort([...sample], intv)
+            heapSort([...sample], intv).sorted,
+            heapSort([...sample], intv).times
         );
 
         let algoritmoSelection: Algoritmo = createAlgoritmo(
             "Selection Sort",
             sample,
-            [],
-            selectionSort([...sample], intv)
+            selectionSort([...sample], intv).sorted,
+            selectionSort([...sample], intv).times
         );
 
         let algoritmoCounting: Algoritmo = createAlgoritmo(
             "Counting Sort",
             sample,
-            [],
-            countingSort([...sample], intv)
+            countingSort([...sample], intv).sorted,
+            countingSort([...sample], intv).times
         );
 
         let algoritmoShell: Algoritmo = createAlgoritmo(
             "Shell Sort",
             sample,
-            [],
-            shellSort([...sample], intv)
+            shellSort([...sample], intv).sorted,
+            shellSort([...sample], intv).times
         );
         //#endregion
 
@@ -116,7 +116,7 @@ function IndexAlgoritmos() {
                 <TablaArreglos
                     arrayInicial={
                         listaAlgoritmos.length > 0
-                            ? listaAlgoritmos[0].arregloInicial
+                            ? listaAlgoritmos[0].arregloOrdenado
                             : []
                     }
                     interval={intervalo}

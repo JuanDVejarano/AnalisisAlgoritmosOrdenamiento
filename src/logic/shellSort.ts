@@ -2,7 +2,7 @@
 export function shellSort(
     arr: number[],
     intervaloTomaDeTiempo: number
-): number[] {
+): { times: number[]; sorted: number[] } {
     const n = arr.length;
     const arrayTimes: number[] = [];
     // tomar el tiempo de inicio
@@ -27,12 +27,11 @@ export function shellSort(
             ) {
                 const endTime = performance.now();
                 arrayTimes.push(endTime - startTime);
-                continue;
             }
         }
     }
-    return arrayTimes;
-    // return arr
+
+    return { times: arrayTimes, sorted: arr };
 }
 
 export default shellSort;

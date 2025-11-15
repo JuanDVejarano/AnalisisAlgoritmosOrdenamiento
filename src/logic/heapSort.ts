@@ -2,7 +2,7 @@
 export function heapSort(
     arr: number[],
     intervaloTomaDeTiempo: number
-): number[] {
+): { times: number[]; sorted: number[] } {
     const n = arr.length;
     const arrayTimes: number[] = [];
     const startTime = performance.now();
@@ -60,7 +60,7 @@ export function heapSort(
         }
     }
 
-    return arrayTimes;
+    return { times: arrayTimes, sorted: arr };
 }
 
 export default heapSort;

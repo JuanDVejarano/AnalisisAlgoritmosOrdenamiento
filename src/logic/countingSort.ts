@@ -2,7 +2,7 @@
 export function countingSort(
     arr: number[],
     intervaloTomaDeTiempo: number
-): number[] {
+): { times: number[]; sorted: number[] } {
     const n = arr.length;
     const arrayTimes: number[] = [];
     // tomar el tiempo de inicio
@@ -43,7 +43,7 @@ export function countingSort(
         arr[i] = output[i];
     }
 
-    return arrayTimes;
+    return { times: arrayTimes, sorted: arr };
     // return arr
 }
 
