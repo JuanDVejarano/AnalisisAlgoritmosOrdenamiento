@@ -5,6 +5,7 @@ import { createAlgoritmo, type Algoritmo } from "../../../model/Algoritmo";
 // Componentes
 import Grafica from "../../../components/GraficaGeneral/GraficaGeneral";
 import Inputs from "../../../components/Inputs/Inputs";
+import TooltipPage from "../../../components/Tooltip/TooltipPage";
 
 // Importa los algoritmos de ordenamiento
 import { bubbleSort } from "../../../logic/bubleSort";
@@ -14,6 +15,7 @@ import { selectionSort } from "../../../logic/selectionSort";
 import { countingSort } from "../../../logic/countingSort";
 import { shellSort } from "../../../logic/shellSort";
 import TablaArreglos from "../../../components/TablaArreglos/TablaArreglos";
+import { Tooltip } from "chart.js";
 
 function IndexAlgoritmos() {
     const [numeroArrays, setNumeroArrays] = useState<number>(() => 10000);
@@ -104,6 +106,26 @@ function IndexAlgoritmos() {
                     intervalo={intervalo}
                     onGenerate={handleGenerate}
                 />
+                <TooltipPage>
+                    <ul>
+                        <li>
+                            Para comparar algoritmos de click en el color del
+                            algoritmo en el gráfico
+                        </li>
+                        <li>
+                            Para generar el grafico de click en el boton
+                            "Generar Grafica"
+                        </li>
+                        <li>
+                            El arreglo se crea con numeros random escriba la
+                            cantidad de elementos del arerglo en el primer input
+                        </li>
+                        <li>
+                            El intervalo define cada cuantos elementos se tomara
+                            el tiempo de ejecución
+                        </li>
+                    </ul>
+                </TooltipPage>
                 <Grafica data={listaAlgoritmos} />
                 <TablaArreglos
                     arrayInicial={

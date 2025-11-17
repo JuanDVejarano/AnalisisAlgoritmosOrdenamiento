@@ -30,6 +30,10 @@ function Inputs({ cantidadArreglo, intervalo, onGenerate }: InputsProps) {
                         setLocalCantidad(Number(e.target.value) || 0)
                     }
                 />
+                <p className="infoText">
+                    Un numero mayor a 30000 puede hacer que la página no
+                    responda.
+                </p>
             </div>
             <div className="input">
                 <label htmlFor="intervalo">Intervalo toma de tiempo:</label>

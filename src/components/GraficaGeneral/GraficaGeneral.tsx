@@ -105,7 +105,7 @@ function Grafica({ data }: GraficaProps) {
             plugins: {
                 title: {
                     display: true,
-                    text: "Chart.js Line Chart - Cubic interpolation mode",
+                    text: "Comparacion de Algoritmos de Ordenamiento",
                 },
                 legend: { position: "top" as const },
                 tooltip: { enabled: true },

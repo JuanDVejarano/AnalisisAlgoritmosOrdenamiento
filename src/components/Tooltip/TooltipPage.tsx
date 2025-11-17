@@ -1,7 +1,7 @@
 import iconTooltip from "../../assets/icons/tooltip.png";
-import "./Tooltip.scss";
+import "./TooltipPage.scss";
 
-function Tooltip({ children }: { children?: React.ReactNode }) {
+function TooltipPage({ children }: { children?: React.ReactNode }) {
     return (
         <div className="tooltip">
             Ayuda
@@ -15,4 +15,4 @@ function Tooltip({ children }: { children?: React.ReactNode }) {
     );
 }
 
-export default Tooltip;
+export default TooltipPage;

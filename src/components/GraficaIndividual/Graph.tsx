@@ -61,6 +61,7 @@ function Grafica({ data }: { data?: number[] }) {
             borderColor: CHART_COLORS.red,
             backgroundColor: CHART_COLORS.red,
             fill: false,
+            tension: 0.4,
         });
     }
 
@@ -73,7 +74,7 @@ function Grafica({ data }: { data?: number[] }) {
             plugins: {
                 title: {
                     display: true,
-                    text: "Chart.js Line Chart - Cubic interpolation mode",
+                    text: "Análisis de tiempo de ejecución",
                 },
                 legend: { position: "top" as const },
                 tooltip: { enabled: true },

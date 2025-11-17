@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Grafica from "../../../components/GraficaIndividual/Graph";
 import Editor from "@monaco-editor/react";
 import "./CodigoAnalisis.scss";
-import Tooltip from "../../../components/Tooltip/Tooltip";
+import TooltipPage from "../../../components/Tooltip/TooltipPage";
 
 function CodigoAnalisis() {
     const [tiempos, setTiempos] = useState<number[]>([]);
@@ -58,7 +58,7 @@ bucles();`);
                         Ingrese el código a analizar:
                     </label>
                     <br /> <br />
-                    <Tooltip>
+                    <TooltipPage>
                         <ul>
                             <li>Use codigo JavaScript</li>
                             <li>
@@ -88,7 +88,7 @@ bucles();`);
                                 </ul>
                             </li>
                         </ul>
-                    </Tooltip>
+                    </TooltipPage>
                     <div className="editorContainerMain">
                         <Editor
                             height="100%"
