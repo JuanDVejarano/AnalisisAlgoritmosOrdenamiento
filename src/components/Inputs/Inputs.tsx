@@ -31,7 +31,7 @@ function Inputs({ cantidadArreglo, intervalo, onGenerate }: InputsProps) {
                     }
                 />
                 <p className="infoText">
-                    Un numero mayor a 30000 puede hacer que la página no
+                    Un numero mayor a 10000 puede hacer que la página no
                     responda.
                 </p>
             </div>

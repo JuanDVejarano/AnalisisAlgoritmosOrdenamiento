@@ -18,8 +18,8 @@ import TablaArreglos from "../../../components/TablaArreglos/TablaArreglos";
 import { Tooltip } from "chart.js";
 
 function IndexAlgoritmos() {
-    const [numeroArrays, setNumeroArrays] = useState<number>(() => 10000);
-    const [intervalo, setIntervalo] = useState<number>(() => 1000);
+    const [numeroArrays, setNumeroArrays] = useState<number>(() => 1000);
+    const [intervalo, setIntervalo] = useState<number>(() => 100);
 
     function handleGenerate(cantidad: number, intervaloNuevo: number) {
         setNumeroArrays(cantidad);
